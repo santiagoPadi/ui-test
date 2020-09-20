@@ -1,4 +1,4 @@
-const { height, width, spacing, fontSize } = require('tailwindcss/defaultTheme')
+const { height, width, spacing, fontSize, opacity } = require('tailwindcss/defaultTheme')
 
 module.exports = {
   important: true,
@@ -57,6 +57,12 @@ module.exports = {
       37: '37.1px',
       15: '15px',
       60: '60px',
+    },
+    opacity: {
+      ...opacity,
+      '10': '0.1',
+      '20': '0.2',
+      '85': '0.85',
     },
   },
   variants: {

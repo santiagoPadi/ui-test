@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CheckHandIcon from '../../../../assets/CheckHand'
 import WikiIcon from '../../../../assets/Wiki'
+import { selectVote } from './controllers'
 const RuleCard = () => {
+  const [selected, setSelected] = useState<true | false | null>(null)
+
   return (
     <section>
       <article className="widget sm:w-45 p-5 sm:p-10 text-15 sm:text-21">
@@ -19,10 +22,20 @@ const RuleCard = () => {
         <p className="font-bold">What's Your Veredict?</p>
       </article>
       <div className="widget-sub flex">
-        <div className="w-full cursor-pointer centered bg-blue bg-opacity-75">
+        <button
+          onClick={() => selectVote(setSelected, true)}
+          className={`${selected === false && 'animated-vote-null'} ${
+            selected == true ? 'w-full' : 'w-1/2'
+          } cursor-pointer centered bg-blue bg-opacity-75 hover:bg-opacity-85 animated-vote`}
+        >
           <CheckHandIcon />
-        </div>
-        <div className="w-full cursor-pointer centered bg-yellow bg-opacity-75">
+        </button>
+        <div
+          onClick={() => selectVote(setSelected, false)}
+          className={`${selected === true && 'animated-vote-null'} ${
+            selected == false ? 'w-full' : 'w-1/2'
+          } cursor-pointer centered bg-yellow bg-opacity-75 hover:bg-opacity-85 animated-vote`}
+        >
           <CheckHandIcon className="transform rotate-180" />
         </div>
       </div>

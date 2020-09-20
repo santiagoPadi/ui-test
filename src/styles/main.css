@@ -42,6 +42,7 @@ div,
 section,
 pre {
   font-family: lato;
+  @apply select-none
 }
 
 .custom-background {
@@ -76,10 +77,29 @@ pre {
     max-width: 90%;
     height: 300px;
   }
+
   .widget-sub {
     max-width: 90%;
     margin-bottom: calc(20vh - 50px);
     margin-left: 5%;
     height: 50px;
   }
+}
+
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+
+.animated-vote {
+  transition: width 1s;
+}
+
+.animated-vote-null {
+  @apply w-0 !important;
+}
+
+.animated-vote:active {
+  @apply w-full
 }
