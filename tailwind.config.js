@@ -15,6 +15,7 @@ module.exports = {
       },
       height: {
         ...height,
+        smIcon: '200px',
         icon: '24px',
         50: '50px',
         80: '80px',
@@ -24,6 +25,7 @@ module.exports = {
       },
       width: {
         ...width,
+        smIcon: '20px',
         icon: '24px',
         45: '45%',
         49: '49%',

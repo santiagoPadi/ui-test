@@ -1,4 +1,5 @@
 import React from 'react'
+import CheckHandIcon from '../../../../assets/CheckHand'
 interface IRuling {
   id: number
   title: string
@@ -8,17 +9,17 @@ interface IRuling {
   url: string
 }
 const Ruling = ({ id, title, subtitle, time, section, url }: IRuling) => {
-  var currentX = 0
-  var currentY = 0
-  var movementConstant = 0.01
+  let currentX = 0
+  let currentY = 0
+  let movementConstant = 0.01
   function handleCursor(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     if (currentX === 0 && currentY === 0) {
       currentX = e.pageX
       currentY = e.pageY
     }
     const cursor = document.getElementById(`Parallax-container-${id}`)
-    var xdiff = e.pageX - currentX
-    var ydiff = e.pageY - currentY
+    let xdiff = e.pageX - currentX
+    let ydiff = e.pageY - currentY
     if (cursor) cursor.setAttribute('style', 'top:' + ydiff * movementConstant + 'px; left:' + xdiff * movementConstant + 'px;')
   }
 
@@ -34,7 +35,9 @@ const Ruling = ({ id, title, subtitle, time, section, url }: IRuling) => {
           <div id={`Parallax-container-${id}`} className="w-full flex  h-full absolute justify-center items-end text-white">
             <div className="w-full flex justify-between sm:justify-center">
               <div className="w-1/12 h-full mt-3 ">
-                <div className="h-8 w-8 bg-blue"></div>
+                <div className="h-8 w-8 bg-blue centered">
+                  <CheckHandIcon className="w-smIcon h-smIcon" />
+                </div>
               </div>
               <div className="w-8/12 flex flex-col justify-start items-end pr-2 sm:pr-0 sm:items-start  mb-5">
                 <h3 className=" font-semibold text-3xl mb-1 text-right sm:text-left">{title}</h3>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CloseIcon from '../../assets/CloseIcon'
 import FooterTheme from './components/FooterTheme'
 import RuleCard from './components/ruleCard'
@@ -6,6 +6,7 @@ import Ruling from './components/Rulings'
 import RulingThemes from './data/rouling'
 const bgpope = require('../../assets/pope.png')
 const HomePage = () => {
+  const [visibleInfoCard, setVisibleInfoCard] = useState<boolean>(true)
   return (
     <div>
       <div
@@ -18,7 +19,7 @@ const HomePage = () => {
         <FooterTheme />
       </div>
       {/* Info Card */}
-      <section key="info" className="px-ph py-5 mb-3">
+      <section key="info" className={`px-ph py-5 mb-3 ${visibleInfoCard ? 'visible' : 'invisible hidden'}`}>
         <div className="sm:flex items-center justify-between bg-gray p-5">
           <div>
             <p className="flex text-21 font-light" style={{ marginBottom: -14 }}>
@@ -32,7 +33,7 @@ const HomePage = () => {
               It's easy: You share ypur opinion, we analyze and put the data in a public report.
             </p>
           </div>
-          <div className="hidden sm:flex">
+          <div onClick={() => setVisibleInfoCard(false)} className="hidden cursor-pointer sm:flex">
             <CloseIcon style={{ width: 25, height: 42 }} />
           </div>
         </div>
