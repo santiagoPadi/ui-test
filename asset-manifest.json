@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/ui-test/static/css/main.0a521d87.chunk.css",
+    "main.js": "/ui-test/static/js/main.86c61d76.chunk.js",
+    "main.js.map": "/ui-test/static/js/main.86c61d76.chunk.js.map",
+    "runtime-main.js": "/ui-test/static/js/runtime-main.3fb78eb7.js",
+    "runtime-main.js.map": "/ui-test/static/js/runtime-main.3fb78eb7.js.map",
+    "static/js/2.804d01dd.chunk.js": "/ui-test/static/js/2.804d01dd.chunk.js",
+    "static/js/2.804d01dd.chunk.js.map": "/ui-test/static/js/2.804d01dd.chunk.js.map",
+    "index.html": "/ui-test/index.html",
+    "precache-manifest.f914c503ab4c9374942d93b2997a8c2a.js": "/ui-test/precache-manifest.f914c503ab4c9374942d93b2997a8c2a.js",
+    "service-worker.js": "/ui-test/service-worker.js",
+    "static/css/main.0a521d87.chunk.css.map": "/ui-test/static/css/main.0a521d87.chunk.css.map",
+    "static/js/2.804d01dd.chunk.js.LICENSE.txt": "/ui-test/static/js/2.804d01dd.chunk.js.LICENSE.txt",
+    "static/media/anyoneElse.png": "/ui-test/static/media/anyoneElse.8ba148ad.png",
+    "static/media/pope.png": "/ui-test/static/media/pope.9dfd23d3.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3fb78eb7.js",
+    "static/js/2.804d01dd.chunk.js",
+    "static/css/main.0a521d87.chunk.css",
+    "static/js/main.86c61d76.chunk.js"
+  ]
+}
