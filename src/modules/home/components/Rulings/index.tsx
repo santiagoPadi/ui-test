@@ -1,5 +1,6 @@
 import React from 'react'
 import CheckHandIcon from '../../../../assets/CheckHand'
+import { calculate } from './controllers'
 interface IRuling {
   id: number
   title: string
@@ -9,6 +10,7 @@ interface IRuling {
   url: string
 }
 const Ruling = ({ id, title, subtitle, time, section, url }: IRuling) => {
+  const { likes, dislikes } = calculate(id)
   let currentX = 0
   let currentY = 0
   let movementConstant = 0.01
@@ -22,7 +24,7 @@ const Ruling = ({ id, title, subtitle, time, section, url }: IRuling) => {
     let ydiff = e.pageY - currentY
     if (cursor) cursor.setAttribute('style', 'top:' + ydiff * movementConstant + 'px; left:' + xdiff * movementConstant + 'px;')
   }
-
+  const rulingStatus = likes.percent > dislikes.percent
   return (
     <div
       className="w-full custom-background flex flex-col justify-end sm:w-49 h-550 mb-5"
@@ -35,8 +37,8 @@ const Ruling = ({ id, title, subtitle, time, section, url }: IRuling) => {
           <div id={`Parallax-container-${id}`} className="w-full flex  h-full absolute justify-center items-end text-white">
             <div className="w-full flex justify-between sm:justify-center">
               <div className="w-1/12 h-full mt-3 ">
-                <div className="h-8 w-8 bg-blue centered">
-                  <CheckHandIcon className="w-smIcon h-smIcon" />
+                <div className={`h-8 w-8 ${rulingStatus ? 'bg-blue' : 'bg-yellow'} centered`}>
+                  <CheckHandIcon className={`w-smIcon h-smIcon ${!rulingStatus && 'transform rotate-180'}`} />
                 </div>
               </div>
               <div className="w-8/12 flex flex-col justify-start items-end pr-2 sm:pr-0 sm:items-start  mb-5">
@@ -52,9 +54,19 @@ const Ruling = ({ id, title, subtitle, time, section, url }: IRuling) => {
           </div>
         </div>
         {/* footer */}
-        <div className="w-full h-50 self-end justify-self-end flex">
-          <div className="w-2/6 bg-blue bg-opacity-75 flex items-center justify-end pr-1"></div>
-          <div className="w-4/6 bg-yellow bg-opacity-75 flex items-center justify-start pl-2"></div>
+        <div className="w-full h-50 self-end justify-self-end flex text-white text-3xl font-light">
+          <div className={`${likes.percent === 0 ? 'w-full' : `w-${1 + likes.width}/12`} bg-blue bg-opacity-75 flex items-center justify-start pl-1`}>
+            <CheckHandIcon />
+            <p className="hidden sm:flex ml-2">{likes.percent}%</p>
+          </div>
+          <div
+            className={`${
+              dislikes.percent === 0 ? 'w-full' : `w-${1 + dislikes.width}/12`
+            } bg-yellow bg-opacity-75 flex items-center justify-end pr-2`}
+          >
+            <p className="hidden sm:flex">{dislikes.percent}%</p>
+            <CheckHandIcon className="transform rotate-180 ml-1" />
+          </div>
         </div>
       </div>
     </div>

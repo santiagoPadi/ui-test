@@ -42,7 +42,7 @@ const HomePage = () => {
       <h1 className="px-ph text-4xl font-light mb-2">Previous Rulings</h1>
       <section key="cards" className="px-ph sm:flex flex-wrap justify-between">
         {RulingThemes.map((ruling, index) => {
-          return <Ruling key={index} id={index} {...ruling} />
+          return <Ruling key={`old-ruling-${index}`} {...ruling} />
         })}
       </section>
     </div>
