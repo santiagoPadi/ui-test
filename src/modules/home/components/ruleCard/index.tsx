@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import CheckHandIcon from '../../../../assets/CheckHand'
 import WikiIcon from '../../../../assets/Wiki'
+import { useStoreActions } from '../../../../state'
 import { selectVote } from './controllers'
 const RuleCard = () => {
   const [selected, setSelected] = useState<true | false | null>(null)
+  const { showAlert } = useStoreActions(actions => actions.alert)
 
   return (
     <section>
@@ -26,7 +28,7 @@ const RuleCard = () => {
       </article>
       <div className="widget-sub flex">
         <button
-          onClick={() => selectVote(setSelected, true)}
+          onClick={() => selectVote(setSelected, showAlert, true)}
           className={`${selected === false && 'animated-vote-null'} ${
             selected == true ? 'w-full' : 'w-1/2'
           } cursor-pointer centered bg-blue bg-opacity-75 hover:bg-opacity-85 animated-vote`}
@@ -34,7 +36,7 @@ const RuleCard = () => {
           <CheckHandIcon />
         </button>
         <div
-          onClick={() => selectVote(setSelected, false)}
+          onClick={() => selectVote(setSelected, showAlert, false)}
           className={`${selected === true && 'animated-vote-null'} ${
             selected == false ? 'w-full' : 'w-1/2'
           } cursor-pointer centered bg-yellow bg-opacity-75 hover:bg-opacity-85 animated-vote`}

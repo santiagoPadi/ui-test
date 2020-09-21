@@ -6,6 +6,7 @@ import Footer from './components/footer'
 import capitalize, { isNil } from './helpers'
 import defaultValues from './data/rulings-votes'
 import { pages } from './routes'
+import Alert from './components/alert'
 
 const hist = createBrowserHistory()
 function App() {
@@ -24,6 +25,7 @@ function App() {
     <React.Suspense fallback="loading">
       <Router history={hist}>
         <Navbar />
+        <Alert />
         <Switch>
           {pages.map(page => (
             <Route key={page.path} path={page.path} component={page.component} exact />
