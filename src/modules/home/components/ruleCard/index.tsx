@@ -17,7 +17,10 @@ const RuleCard = () => {
           {/* break */} is he just another papal pervert protector? {/* break */}(thumbs down) or a true pedophile punishing pontiff? (thumbs up)
         </p>
         <div className="flex items-center mb-10">
-          <WikiIcon /> <span className="underline ml-3 text-15 ">More information</span>
+          <WikiIcon />{' '}
+          <a href="https://en.wikipedia.org/wiki/Pope_Francis" target="_blank" className="underline ml-3 text-15 ">
+            More information
+          </a>
         </div>
         <p className="font-bold">What's Your Veredict?</p>
       </article>
