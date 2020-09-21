@@ -61,6 +61,7 @@ module.exports = {
     },
     minHeight: {
       '300': '300px',
+      '700': '700px',
       full: '100%',
     },
     fontSize: {
