@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CheckHandIcon from '../../../../assets/CheckHand'
+import Modal from '../../../../components/modal'
 import { calculate } from './controllers'
 interface IRuling {
   id: number
@@ -9,6 +10,7 @@ interface IRuling {
   section: string
   url: string
 }
+
 const Ruling = ({ id, title, subtitle, time, section, url }: IRuling) => {
   const { likes, dislikes } = calculate(id)
   let currentX = 0
@@ -25,16 +27,40 @@ const Ruling = ({ id, title, subtitle, time, section, url }: IRuling) => {
     if (cursor) cursor.setAttribute('style', 'top:' + ydiff * movementConstant + 'px; left:' + xdiff * movementConstant + 'px;')
   }
   const rulingStatus = likes.percent > dislikes.percent
+  const [visible, setvisible] = useState(false)
   return (
     <div
-      className="w-full custom-background flex flex-col justify-end sm:w-49 h-550 mb-5"
+      className="w-full custom-background flex flex-col justify-end sm:w-49 max-w-2xl h-550 mb-5"
       style={{
         backgroundImage: `url(${url})`,
       }}
     >
       <div onMouseMove={handleCursor} id={`${id}`} className="w-full h-full flex flex-col justify-end bg-gradient-to-b from-transparent to-op-black">
+        <Modal visible={visible} onCancel={() => setvisible(false)}>
+          <div
+            className="w-1/2 max-w-xl h-500 rounded custom-background flex text-white"
+            style={{
+              backgroundImage: `url(${url})`,
+            }}
+          >
+            <div className="w-full flex justify-between sm:justify-center items-end bg-gradient-to-b from-transparent to-op-black">
+              <div className="w-1/12 h-full ">
+                <div className={`h-8 w-8 ${rulingStatus ? 'bg-blue' : 'bg-yellow'} centered`}>
+                  <CheckHandIcon className={`w-smIcon h-smIcon ${!rulingStatus && 'transform rotate-180'}`} />
+                </div>
+              </div>
+              <div className="w-8/12 flex flex-col justify-start items-end pr-2 sm:pr-0 sm:items-start  ">
+                <h3 className=" font-semibold text-3xl mb-1 text-right sm:text-left">{title}</h3>
+                <p className="mb-5 text-right sm:text-left">{subtitle}</p>
+              </div>
+              <div className="w-3/12 hidden flex-col justify-end items-end text-sm pr-3 mb-5 sm:flex">
+                <p className="font-semibold">{time}</p>
+              </div>
+            </div>
+          </div>
+        </Modal>
         <div className="flex h-full relative justify-end">
-          <div id={`Parallax-container-${id}`} className="w-full flex  h-full absolute justify-center items-end text-white">
+          <div id={`Parallax-container-${id}`} className="w-full flex z-10  h-full absolute justify-center items-end text-white">
             <div className="w-full flex justify-between sm:justify-center">
               <div className="w-1/12 h-full mt-3 ">
                 <div className={`h-8 w-8 ${rulingStatus ? 'bg-blue' : 'bg-yellow'} centered`}>
@@ -44,7 +70,9 @@ const Ruling = ({ id, title, subtitle, time, section, url }: IRuling) => {
               <div className="w-8/12 flex flex-col justify-start items-end pr-2 sm:pr-0 sm:items-start  mb-5">
                 <h3 className=" font-semibold text-3xl mb-1 text-right sm:text-left">{title}</h3>
                 <p className="mb-5 text-right sm:text-left">{subtitle}</p>
-                <button className="border px-5 py-1 sm:text-lg font-semibold">View Full Report</button>
+                <button onClick={() => setvisible(true)} className="border px-5 py-1 sm:text-lg font-semibold">
+                  View Full Report
+                </button>
               </div>
               <div className="w-3/12 hidden flex-col justify-end items-end text-sm pr-3 mb-5 sm:flex">
                 <p className="font-semibold">{time}</p>
