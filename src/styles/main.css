@@ -75,6 +75,13 @@ pre {
   }
 }
 
+@media (max-height: 900px) {
+  .widget-sub {
+    margin-bottom: calc(20vh - 80px);
+    height: 80px;
+  }
+}
+
 *:focus {
   outline: none !important;
   box-shadow: none !important;
