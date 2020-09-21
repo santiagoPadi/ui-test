@@ -10,7 +10,7 @@ const HomePage = () => {
   return (
     <div>
       <div
-        className="flex flex-1 bg-center bg-no-repeat bg-cover justify-end flex-col h-screen"
+        className="flex flex-1 bg-center bg-no-repeat bg-cover justify-end flex-col h-screen min-h-700"
         style={{
           backgroundImage: `url(${bgpope})`,
         }}
