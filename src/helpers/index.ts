@@ -4,3 +4,7 @@ export function isNil(value: any): boolean {
   }
   return false
 }
+
+export default function capitalize(s: string) {
+  return s.charAt(0).toUpperCase() + s.slice(1)
+}
