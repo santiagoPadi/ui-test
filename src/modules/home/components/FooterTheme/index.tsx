@@ -3,6 +3,7 @@ import React from 'react'
 const FooterTheme = () => {
   const currentlyDays = Math.ceil((moment().date() / 30) * 10)
   const lackDays = 10 - currentlyDays
+
   return (
     <div className="w-full h-50 self-end  flex">
       <div className={`w-${1 + currentlyDays}/12 bg-black bg-opacity-25 flex items-center justify-end pr-1`}>
