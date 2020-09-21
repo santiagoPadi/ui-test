@@ -7,17 +7,6 @@
   src: url('/fonts/Lato/Lato-Regular.ttf') format('ttf');
 }
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
 
 .centered {
   display: flex;
@@ -42,6 +31,7 @@ div,
 section,
 pre {
   font-family: lato;
+  @apply select-none
 }
 
 .custom-background {
@@ -76,10 +66,36 @@ pre {
     max-width: 90%;
     height: 300px;
   }
+
   .widget-sub {
     max-width: 90%;
     margin-bottom: calc(20vh - 50px);
     margin-left: 5%;
     height: 50px;
   }
+}
+
+@media (max-height: 900px) {
+  .widget-sub {
+    margin-bottom: calc(20vh - 80px);
+    height: 80px;
+  }
+}
+
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+
+.animated-vote {
+  transition: width 1s;
+}
+
+.animated-vote-null {
+  @apply w-0 !important;
+}
+
+.animated-vote:active {
+  @apply w-full
 }

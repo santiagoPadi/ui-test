@@ -13,19 +13,19 @@ interface IRuling {
 
 const Ruling = ({ id, title, subtitle, time, section, url }: IRuling) => {
   const { likes, dislikes } = calculate(id)
-  let currentX = 0
-  let currentY = 0
-  let movementConstant = 0.01
-  function handleCursor(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-    if (currentX === 0 && currentY === 0) {
-      currentX = e.pageX
-      currentY = e.pageY
-    }
-    const cursor = document.getElementById(`Parallax-container-${id}`)
-    let xdiff = e.pageX - currentX
-    let ydiff = e.pageY - currentY
-    if (cursor) cursor.setAttribute('style', 'top:' + ydiff * movementConstant + 'px; left:' + xdiff * movementConstant + 'px;')
-  }
+  // let currentX = 0
+  // let currentY = 0
+  // let movementConstant = 0.01
+  // function handleCursor(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+  //   if (currentX === 0 && currentY === 0) {
+  //     currentX = e.pageX
+  //     currentY = e.pageY
+  //   }
+  //   const cursor = document.getElementById(`Parallax-container-${id}`)
+  //   let xdiff = e.pageX - currentX
+  //   let ydiff = e.pageY - currentY
+  //   if (cursor) cursor.setAttribute('style', 'top:' + ydiff * movementConstant + 'px; left:' + xdiff * movementConstant + 'px;')
+  // }
   const rulingStatus = likes.percent > dislikes.percent
   const [visible, setvisible] = useState(false)
   return (
@@ -35,7 +35,11 @@ const Ruling = ({ id, title, subtitle, time, section, url }: IRuling) => {
         backgroundImage: `url(${url})`,
       }}
     >
-      <div onMouseMove={handleCursor} id={`${id}`} className="w-full h-full flex flex-col justify-end bg-gradient-to-b from-transparent to-op-black">
+      <div
+        // onMouseMove={handleCursor}
+        id={`${id}`}
+        className="w-full h-full flex flex-col justify-end bg-gradient-to-b from-transparent to-op-black"
+      >
         <Modal visible={visible} onCancel={() => setvisible(false)}>
           <div
             className="w-1/2 max-w-xl h-500 rounded custom-background flex text-white"
